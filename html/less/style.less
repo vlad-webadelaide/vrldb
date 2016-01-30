@@ -1,0 +1,58 @@
+@import "variables.less";
+@import "reset.less";
+
+// ====================
+// FONT FACES
+// ====================
+@font-face {
+    font-family: 'Roboto Light';
+    src: url('@{path-to-fonts}Roboto-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: 300;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('@{path-to-fonts}Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('@{path-to-fonts}Oswald-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+// ====================
+// STYLES
+// ====================
+
+.regular-text() {
+  font-family: 'Roboto Light';
+  font-size: 14px;
+}
+
+body {
+  .regular-text();
+}
+
+.heading {
+  text-transform: uppercase;
+}
+
+.content {
+  width: @content-width;
+  padding: @basic-padding 0;
+  margin: auto auto;
+}
+
+h1 {
+  &.heading {
+    font-family: 'Oswald';
+    font-size: @h1-heading-size;
+    color: @dark-blue;
+    margin: @block-margin-top 0 0;
+  }
+}
