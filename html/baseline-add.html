@@ -7,8 +7,44 @@
   <script src="js/less.js" data-env="development"></script>
 </head>
 <body>
-  <div class="content">
-    <h1 class="heading">Baseline Entry</h1>
+  <div id="content">
+    <div class="block-wrapper">
+      <h1 class="main-heading">Baseline Entry</h1>
+      <div class="block">
+        <div class="block-header">
+          <h3 class="block-heading">Subject</h3>
+        </div>
+        <div class="block-left-half spaced-out-text">
+          <p>Gender:</p>
+          <p>Age at first diagnosis of vitreoretinal lymphoma:</p>
+          <p>Country of birth:</p>
+          <p>Culture, ethnicity and/or race:</p>
+          <p>HIV status:</p>
+        </div>
+        <div class="block-right-half spaced-out-text">
+          <!-- gender -->
+          <input type="radio" name="gender" id="male" value="0" runat="server"><label for="male">Male</label>
+          <input type="radio" name="gender" id="female" value="1" runat="server"><label for="female">Female</label>
+          <br>
+          <!-- age -->
+          <label for="age_years">Years</label><input class="input-small" type="text" name="age_years" id="age_years" runat="server">
+          <label for="age_months">Months</label><input class="input-small" type="text" name="age_months" id="age_months" runat="server">
+          <br>
+          <!-- country of birth -->
+          <select class="input-regular" name="country_of_birth" id="country_of_birth" runat="server">
+            <option value="null">Select</option>
+          </select>
+          <br>
+          <!-- ethnicity -->
+          <input class="input-regular" type="text" name="ethnicity" id="ethnicity" placeholder="Type in" runat="server">
+          <br>
+          <!-- HIV status -->
+          <select class="input-regular" name="hiv_status" id="hiv_status" runat="server">
+            <option value="null">Select</option>
+          </select>
+        </div>
+      </div>
+    </div>
   </div>
 </body>
 </html>
