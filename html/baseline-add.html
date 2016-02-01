@@ -1,50 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Baseline : Add</title>
   <link rel="stylesheet/less" type="text/css" href="less/style.less">
   <script src="js/less.js" data-env="development"></script>
 </head>
+
 <body>
   <div id="content">
     <div class="block-wrapper">
       <h1 class="main-heading">Baseline Entry</h1>
+
+      <!-- Subject -->
       <div class="block">
         <div class="block-header">
           <h3 class="block-heading">Subject</h3>
         </div>
-        <div class="block-left-half spaced-out-text">
-          <p>Gender:</p>
-          <p>Age at first diagnosis of vitreoretinal lymphoma:</p>
-          <p>Country of birth:</p>
-          <p>Culture, ethnicity and/or race:</p>
-          <p>HIV status:</p>
+        <div class="block-content-section">
+          <div class="section-left-half spaced-out-text">
+            <p>Gender:</p>
+            <p>Age at first diagnosis of vitreoretinal lymphoma:</p>
+            <p>Country of birth:</p>
+            <p>Culture, ethnicity and/or race:</p>
+            <p>HIV status:</p>
+          </div>
+          <div class="section-right-half spaced-out-text">
+            <!-- gender -->
+            <input type="radio" name="gender" id="male" value="0" runat="server">
+            <label for="male">Male</label>
+            <input type="radio" name="gender" id="female" value="1" runat="server">
+            <label for="female">Female</label>
+            <br>
+            <!-- age -->
+            <label for="age_years">Years</label>
+            <input class="input-small" type="text" name="age_years" id="age_years" runat="server">
+            <label for="age_months">Months</label>
+            <input class="input-small" type="text" name="age_months" id="age_months" runat="server">
+            <br>
+            <!-- country of birth -->
+            <select class="input-regular" name="country_of_birth" id="country_of_birth" runat="server">
+              <option value="null">Select</option>
+            </select>
+            <br>
+            <!-- ethnicity -->
+            <input class="input-regular" type="text" name="ethnicity" id="ethnicity" placeholder="Type in" runat="server">
+            <br>
+            <!-- HIV status -->
+            <select class="input-regular" name="hiv_status" id="hiv_status" runat="server">
+              <option value="null">Select</option>
+            </select>
+          </div>
         </div>
-        <div class="block-right-half spaced-out-text">
-          <!-- gender -->
-          <input type="radio" name="gender" id="male" value="0" runat="server"><label for="male">Male</label>
-          <input type="radio" name="gender" id="female" value="1" runat="server"><label for="female">Female</label>
-          <br>
-          <!-- age -->
-          <label for="age_years">Years</label><input class="input-small" type="text" name="age_years" id="age_years" runat="server">
-          <label for="age_months">Months</label><input class="input-small" type="text" name="age_months" id="age_months" runat="server">
-          <br>
-          <!-- country of birth -->
-          <select class="input-regular" name="country_of_birth" id="country_of_birth" runat="server">
-            <option value="null">Select</option>
-          </select>
-          <br>
-          <!-- ethnicity -->
-          <input class="input-regular" type="text" name="ethnicity" id="ethnicity" placeholder="Type in" runat="server">
-          <br>
-          <!-- HIV status -->
-          <select class="input-regular" name="hiv_status" id="hiv_status" runat="server">
-            <option value="null">Select</option>
-          </select>
+      </div>
+
+      <!-- Basis for First Diagnosis -->
+      <div class="block">
+        <div class="block-header">
+          <h3 class="block-heading">Basis for First Diagnosis of Vitreoretinal Lymphoma</h3>
+        </div>
+        <div class="block-content-section">
+          <div class="section-left-half spaced-out-text">
+            <!-- Aqueous -->
+            <input type="checkbox" name="aqueous" id="aqueous" runat="server">
+            <label class="parent-label" for="aqueous">Aqueous</label>
+            <div class="section-nested">
+              <input type="checkbox" name="aqu_cytology" id="aqu_cytology" runat="server">
+              <label for="aqu_cytology">Cytology</label>
+              <br>
+              <input type="checkbox" name="aqu_immunophenotyping" id="aqu_immunophenotyping" runat="server">
+              <label for="aqu_immunophenotyping">Immunophenotyping</label>
+              <!-- Immunophenotyping -->
+              <div class="section-nested">
+                <input type="checkbox" name="aqu_immunocytochemistry" id="aqu_immunocytochemistry" runat="server">
+                <label for="aqu_immunocytochemistry">Immunocytochemistry</label>
+                <br>
+                <input type="checkbox" name="aqu_flow_cytometry" id="aqu_flow_cytometry" runat="server">
+                <label for="aqu_flow_cytometry">Flow cytometry</label>
+              </div>
+              <input type="checkbox" name="aqu_pcr" id="aqu_pcr" runat="server">
+              <label for="aqu_pcr">PCR</label>
+              <!-- PCR -->
+              <div class="section-nested">
+                <input type="checkbox" name="aqu_pcr_igh_gene" id="aqu_pcr_igh_gene" runat="server">
+                <label for="aqu_pcr_igh_gene">IgH gene rearrangement</label>
+                <br>
+                <input type="checkbox" name="aqu_pcr_other_marker_checkbox" id="aqu_pcr_other_marker_checkbox" runat="server">
+                <label for="aqu_pcr_other_marker_checkbox">Other marker</label>
+                <div class="section-nested">
+                  <textarea class="input-multiline" type="text" name="aqu_pcr_other_marker" id="aqu_pcr_other_marker" runat="server"></textarea>
+                </div>
+              </div>
+              <input type="checkbox" name="aqu_cytokine_analysis" id="aqu_cytokine_analysis" runat="server">
+              <label for="aqu_cytokine_analysis">Cytokine analysis</label>
+              <div class="section-nested">
+                <input type="checkbox" name="aqu_cytokine_il_10" id="aqu_cytokine_il_10" runat="server">
+                <label for="aqu_cytokine_il_10">IL-10</label>
+                <br>
+                <input type="checkbox" name="aqu_cytokine_il_10_il_6" id="aqu_cytokine_il_10_il_6" runat="server">
+                <label for="aqu_cytokine_il_10_il_6">IL-10:IL-6</label>
+              </div>
+              <input type="checkbox" name="aqu_other_test_checkbox" id="aqu_other_test_checkbox" runat="server">
+              <label for="aqu_other_test_checkbox">Other test</label>
+              <div class="section-nested">
+                <textarea class="input-multiline" type="text" name="aqu_other_test" id="aqu_other_test" runat="server"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="section-right-half spaced-out-text">
+            <!-- Vitreous -->
+            <input type="checkbox" name="vitreous" id="vitreous" runat="server">
+            <label class="parent-label" for="vitreous">Vitreous</label>
+            <div class="section-nested">
+              <input type="checkbox" name="vit_cytology" id="vit_cytology" runat="server">
+              <label for="vit_cytology">Cytology</label>
+              <br>
+              <input type="checkbox" name="vit_immunophenotyping" id="vit_immunophenotyping" runat="server">
+              <label for="vit_immunophenotyping">Immunophenotyping</label>
+              <!-- Immunophenotyping -->
+              <div class="section-nested">
+                <input type="checkbox" name="vit_immunocytochemistry" id="vit_immunocytochemistry" runat="server">
+                <label for="vit_immunocytochemistry">Immunocytochemistry</label>
+                <br>
+                <input type="checkbox" name="vit_flow_cytometry" id="vit_flow_cytometry" runat="server">
+                <label for="vit_flow_cytometry">Flow cytometry</label>
+              </div>
+              <input type="checkbox" name="vit_pcr" id="vit_pcr" runat="server">
+              <label for="vit_pcr">PCR</label>
+              <!-- PCR -->
+              <div class="section-nested">
+                <input type="checkbox" name="vit_pcr_igh_gene" id="vit_pcr_igh_gene" runat="server">
+                <label for="vit_pcr_igh_gene">IgH gene rearrangement</label>
+                <br>
+                <input type="checkbox" name="vit_pcr_other_marker_checkbox" id="vit_pcr_other_marker_checkbox" runat="server">
+                <label for="vit_pcr_other_marker_checkbox">Other marker</label>
+                <div class="section-nested">
+                  <textarea class="input-multiline" type="text" name="vit_pcr_other_marker" id="vit_pcr_other_marker" runat="server"></textarea>
+                </div>
+              </div>
+              <input type="checkbox" name="vit_cytokine_analysis" id="vit_cytokine_analysis" runat="server">
+              <label for="vit_cytokine_analysis">Cytokine analysis</label>
+              <div class="section-nested">
+                <input type="checkbox" name="vit_cytokine_il_10" id="vit_cytokine_il_10" runat="server">
+                <label for="vit_cytokine_il_10">IL-10</label>
+                <br>
+                <input type="checkbox" name="vit_cytokine_il_10_il_6" id="vit_cytokine_il_10_il_6" runat="server">
+                <label for="vit_cytokine_il_10_il_6">IL-10:IL-6</label>
+              </div>
+              <input type="checkbox" name="vit_other_test_checkbox" id="vit_other_test_checkbox" runat="server">
+              <label for="vit_other_test_checkbox">Other test</label>
+              <div class="section-nested">
+                <textarea class="input-multiline" type="text" name="vit_other_test" id="vit_other_test" runat="server"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-content-section">
+          <div class="section-left-half spaced-out-text">
+            <!-- Retina-Choroid -->
+            <input type="checkbox" name="retina_choroid" id="retina_choroid" runat="server">
+            <label class="parent-label" for="retina_choroid">Retina-Choroid</label>
+            <div class="section-nested">
+              <input type="checkbox" name="ret_histopathology" id="ret_histopathology" runat="server">
+              <label for="ret_histopathology">Histopathology</label>
+              <br>
+              <input type="checkbox" name="ret_immunophenotyping" id="ret_immunophenotyping" runat="server">
+              <label for="ret_immunophenotyping">Immunophenotyping</label>
+              <!-- Immunophenotyping -->
+              <div class="section-nested">
+                <input type="checkbox" name="ret_immunocytochemistry" id="ret_immunocytochemistry" runat="server">
+                <label for="ret_immunocytochemistry">Immunocytochemistry</label>
+                <br>
+                <input type="checkbox" name="ret_immunohistochemistry" id="ret_immunohistochemistry" runat="server">
+                <label for="ret_immunohistochemistry">Immunohistochemistry</label>
+              </div>
+              <input type="checkbox" name="ret_pcr" id="ret_pcr" runat="server">
+              <label for="ret_pcr">PCR</label>
+              <!-- PCR -->
+              <div class="section-nested">
+                <input type="checkbox" name="ret_pcr_igh_gene" id="ret_pcr_igh_gene" runat="server">
+                <label for="ret_pcr_igh_gene">IgH gene rearrangement</label>
+                <br>
+                <input type="checkbox" name="ret_pcr_other_marker_checkbox" id="ret_pcr_other_marker_checkbox" runat="server">
+                <label for="ret_pcr_other_marker_checkbox">Other marker</label>
+                <div class="section-nested">
+                  <textarea class="input-multiline" type="text" name="ret_pcr_other_marker" id="ret_pcr_other_marker" runat="server"></textarea>
+                </div>
+              </div>
+              <input type="checkbox" name="ret_other_test_checkbox" id="ret_other_test_checkbox" runat="server">
+              <label for="ret_other_test_checkbox">Other test</label>
+              <div class="section-nested">
+                <textarea class="input-multiline" type="text" name="ret_other_test" id="ret_other_test" runat="server"></textarea>
+              </div>
+            </div>
+          </div>
+          <div class="section-right-half spaced-out-text">
+
+          </div>
         </div>
       </div>
     </div>
   </div>
 </body>
+
 </html>

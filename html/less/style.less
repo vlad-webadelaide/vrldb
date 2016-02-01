@@ -57,8 +57,9 @@
   text-transform: uppercase;
 }
 
-[class*="block"] {
+[class*="block"], [class*="section"] {
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 body {
@@ -102,6 +103,10 @@ h1 {
       .roboto-regular();
     }
   }
+  &-content-section {}
+}
+
+.section {
   &-left-half, &-right-half {
     width: @content-width / 2;
     padding: @basic-padding;
@@ -109,6 +114,22 @@ h1 {
   }
   &-right-half {
     float: right;
+  }
+  &-nested {
+    & {
+      position: relative;
+      width: 100%;
+      padding-left: @form-spacing;
+    }
+    &:before {
+      content: " ";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      top: 0;
+      left: 0;
+      background: url('@{path-to-images}sprite.png') -70px -11px no-repeat;
+    }
   }
 }
 
@@ -128,4 +149,5 @@ h1 {
   &-regular {
     width: @input-regular-width;
   }
+  &-multiline {}
 }
