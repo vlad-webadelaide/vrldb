@@ -13,7 +13,7 @@
       // initialise select boxes
       $('select').selectBox();
 
-      // fold nested sections
+      // fold down nested sections
       $('.section-nested').each(function() {
         var $self = $(this);
         var $switcher = $('#' + $self.data('switcher'));
@@ -48,21 +48,21 @@
         <h3 class="block-heading centered-text">Subject</h3>
       </div>
       <div class="block-content-section">
-        <div class="section-half float-left bolder-font required">
+        <div class="section-half float-left bolder-font">
           <div class="form-field">
-            <p>Gender:</p>
+            <p>* Gender:</p>
           </div>
           <div class="form-field">
-            <p>Age at first diagnosis of vitreoretinal lymphoma:</p>
+            <p>* Age at first diagnosis of vitreoretinal lymphoma:</p>
           </div>
           <div class="form-field">
-            <p>Country of birth:</p>
+            <p>* Country of birth:</p>
           </div>
           <div class="form-field">
-            <p>Culture, ethnicity and/or race:</p>
+            <p>* Culture, ethnicity and/or race:</p>
           </div>
           <div class="form-field">
-            <p>HIV status:</p>
+            <p>* HIV status:</p>
           </div>
         </div>
         <div class="section-half float-right">
@@ -312,7 +312,7 @@
         <div class="section-half float-right">
           <div class="form-field">
             <input type="checkbox" name="other_ocular_tissue_switcher" id="other_ocular_tissue_switcher" runat="server">
-            <label class="bolder-font" for="other_ocular_tissue_switcher"><span></span>Other ocular tissue</label>
+            <label for="other_ocular_tissue_switcher"><span></span>Other ocular tissue</label>
           </div>
           <div class="section-nested" data-switcher="other_ocular_tissue_switcher">
             <div class="form-field-relative">
@@ -321,15 +321,17 @@
           </div>
           <div class="form-field">
             <input type="checkbox" name="circumstantial_only" id="circumstantial_only" runat="server">
-            <label class="bolder-font" for="circumstantial_only"><span></span>Circumstantial only</label>
+            <label for="circumstantial_only"><span></span>Circumstantial only</label>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- <div class="height-regulator"> -->
+    <div class="clearfix"></div>
+
+    <div class="height-regulator">
       <!-- Initial Disease Site -->
-      <div class="block-half float-left">
+      <div class="block-half">
         <div class="block-header">
           <h3 class="block-heading centered-text">Initial Disease Site</h3>
         </div>
@@ -364,8 +366,10 @@
         </div>
       </div>
 
+      <div class="separator"></div>
+
       <!-- Presentation -->
-      <div class="block-half float-right">
+      <div class="block-half">
         <div class="block-header">
           <h3 class="block-heading centered-text">Presentation</h3>
         </div>
@@ -391,7 +395,7 @@
           </div>
         </div>
       </div>
-    <!-- </div> -->
+    </div>
 
     <div class="clearfix"></div>
 
@@ -504,12 +508,20 @@
 
     <div class="block-transparent">
       <button id="cancel" class="button-large button-red float-right">
-        <span class="icon icon-tick"></span>
-        <span class="content">Cancel</span>
+        <div class="button-icon float-left">
+          <span class="icon-cancel"></span>
+        </div>
+        <div class="button-content">
+          <p>Cancel</p>
+        </div>
       </button>
       <button id="submit" type="submit" class="button-large button-green float-right">
-        <span class="icon icon-tick"></span>
-        <span class="content">Save</span>
+        <div class="button-icon float-left">
+          <span class="icon-tick"></span>
+        </div>
+        <div class="button-content">
+          <p>Save</p>
+        </div>
       </button>
     </div>
   </div>
