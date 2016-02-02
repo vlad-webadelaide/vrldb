@@ -1,5 +1,6 @@
 @import "variables.less";
 @import "reset.less";
+@import "select-box.less";
 
 // ====================
 // FONT FACES
@@ -8,13 +9,20 @@
     font-family: 'Roboto Light';
     src: url('@{path-to-fonts}Roboto-Light.ttf') format('truetype');
     font-weight: 300;
-    font-style: 300;
+    font-style: normal;
 }
 
 @font-face {
     font-family: 'Roboto';
     src: url('@{path-to-fonts}Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto Medium';
+    src: url('@{path-to-fonts}Roboto-Medium.ttf') format('truetype');
+    font-weight: 500;
     font-style: normal;
 }
 
@@ -29,8 +37,14 @@
 // MIXINS
 // ====================
 
-.rounded-corners() {
-  border-radius: 50px;
+.standard-input() {
+  color: @text-dark-grey;
+  display: inline-block;
+  margin: (@form-spacing - @input-height) / 2 0;
+  height: @input-height;
+  padding: 0 @basic-padding;
+  border: 1px solid @lighter-green;
+  box-sizing: border-box;
 }
 
 .oswald() {
@@ -39,8 +53,8 @@
 }
 
 .roboto-regular() {
-  font-family: 'Roboto';
-  font-weight: normal;
+  font-family: 'Roboto Medium';
+  font-weight: 500;
 }
 
 .roboto-light() {
@@ -62,9 +76,24 @@
   overflow: hidden;
 }
 
+[class*="form-field"] {
+  &:before {
+    content: '';
+    width: 0;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  & * {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
 body {
-  font-size: 14px;
-  color: @warm-grey-7;
+  background: @main-bg-color;
+  font-size: @text-size;
+  color: @text-dark-grey;
   .roboto-light();
 }
 
@@ -72,48 +101,116 @@ body {
   width: @content-width;
   padding: 0;
   margin: auto;
+  overflow: hidden;
 }
 
-h1 {
-  &.main-heading {
-    font-size: @h1-heading-size;
-    color: @dark-blue;
-    margin-bottom: @basic-margin;
-    .oswald();
+.form-field {
+  & {
+    height: @form-spacing;
+  }
+  & label + input[type="radio"] + label, & input[type="text"] + label, & label + input[type="text"] {
+    margin-left: @basic-margin;
+  }
+  &-relative {
+    min-height: @form-spacing;
   }
 }
 
+.bolder-font {
+  .roboto-regular();
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.float {
+  &-right {
+    float: right;
+    right: 0;
+  }
+  &-left {
+    float: left;
+    left: 0;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.required {
+  color: @lighter-red;
+}
+
+.clearfix:after {
+  content: " "; /* Older browser do not support empty content */
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+
+// h1 {
+//   &.main-heading {
+//     font-size: @h1-heading-size;
+//     color: @darker-blue;
+//     margin-bottom: @basic-margin;
+//     .oswald();
+//   }
+// }
+
 .block {
-  & {}
-  &-wrapper {
-    margin: @basic-margin auto;
+  &, &-transparent {
+    width: @content-width;
+    float: left;
+  }
+  &, &-half {
+    background: @block-bg-color;
+    border-radius: @basic-border-radius;
+    box-shadow: @basic-shadow @grey-shadow;
+    margin: @basic-margin auto @basic-margin + @basic-shadow-size;
   }
   &-header {
     & {
-      width: @content-width;
-      height: @header-height;
-      line-height: @header-height - (@basic-padding * 2);
-      padding: @basic-padding (@basic-padding * 2);
-      background: @skin-color-light;
-      .rounded-corners();
+      width: 100%;
+      height: @block-header-height;
+      line-height: @block-header-height - (@basic-padding * 2);
+      padding: @basic-padding;
+      border-bottom: 1px solid @dark-grey;
     }
     & .block-heading {
       font-size: @h3-heading-size;
-      color: @warm-grey-6;
-      .roboto-regular();
+      .roboto-light();
     }
   }
-  &-content-section {}
+  &-content-section {
+    width: 100%;
+    padding: @basic-padding;
+  }
+  &-half {
+    & {
+      width: @content-width / 2 - @basic-margin;
+    }
+    &.float-left {
+      margin-right: @basic-margin;
+    }
+    &.float-right {
+      margin-left: @basic-margin;
+    }
+  }
 }
 
 .section {
-  &-left-half, &-right-half {
-    width: @content-width / 2;
-    padding: @basic-padding;
-    float: left;
+  &-half {
+    width: 50%;
   }
-  &-right-half {
-    float: right;
+  &-full {
+    width: 100%;
+    float: none;
+  }
+  &-half, &-full {
+    padding: @basic-padding;
   }
   &-nested {
     & {
@@ -124,24 +221,50 @@ h1 {
     &:before {
       content: " ";
       position: absolute;
-      width: 20px;
-      height: 20px;
+      width: @form-spacing / 2;
+      height: @form-spacing / 2;
       top: 0;
-      left: 0;
-      background: url('@{path-to-images}sprite.png') -70px -11px no-repeat;
+      left: 8px;
+      border-left: 1px solid @lighter-blue;
+      border-bottom: 1px solid @lighter-blue;
+      border-radius: @basic-border-radius;
     }
   }
 }
 
-.spaced-out-text {
-  line-height: @form-spacing;
+
+input {
+  &[type="checkbox"], &[type="radio"] {
+    display: none;
+  }
+  &[type="checkbox"] + label span, &[type="radio"] + label span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin: -2px 10px 0 0;
+    vertical-align:middle;
+    cursor: pointer;
+  }
+  &[type="checkbox"] + label, &[type="radio"] + label {
+    cursor: pointer;
+  }
+  &[type="checkbox"] + label span {
+    background: url('@{path-to-images}sprite.png') -1px -126px no-repeat;
+  }
+  &[type="radio"] + label span {
+    background: url('@{path-to-images}sprite.png') -1px -147px no-repeat;
+  }
+  &[type="checkbox"]:checked + label span {
+     background: url('@{path-to-images}sprite.png') -24px -126px no-repeat;
+  }
+  &[type="radio"]:checked + label span {
+    background: url('@{path-to-images}sprite.png') -24px -147px no-repeat;
+  }
 }
 
 .input {
-  &-small, &-regular {
-    height: @input-height;
-    border: 1px solid @warm-grey-2;
-    box-sizing: border-box;
+  &-small, &-regular, &-multiline {
+    .standard-input();
   }
   &-small {
     width: @input-small-width;
@@ -149,5 +272,10 @@ h1 {
   &-regular {
     width: @input-regular-width;
   }
-  &-multiline {}
+  &-multiline {
+    min-height: @input-height * 2;
+    max-height: @input-height * 8;
+    margin: (@form-spacing - 16) / 2 0;
+    resize: vertical;
+  }
 }
